@@ -65,6 +65,20 @@ public class CommentsDataSource {
 		cursor.close();
 		return comments;
 	}
+	
+	Comment getComment(int id) {
+		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS, new String[] { "id",
+				"comment"}," id = ?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+		if (cursor != null)
+			cursor.moveToFirst();
+
+		Comment comment = new Comment();
+		comment.setId(cursor.getLong(0));
+		comment.setComment(cursor.getString(1));
+		// return options
+		return comment;
+	}
 
 	private Comment cursorToComment(Cursor cursor) {
 		Comment comment = new Comment();

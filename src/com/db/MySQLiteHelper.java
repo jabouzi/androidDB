@@ -8,7 +8,7 @@ import android.util.Log;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
 	public static final String TABLE_COMMENTS = "comments";
-	public static final String COLUMN_ID = "_id";
+	public static final String COLUMN_ID = "id";
 	public static final String COLUMN_COMMENT = "comment";
 
 	private static final String DATABASE_NAME = "commments.db";
@@ -27,6 +27,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);
+		database.execSQL(" INSERT INTO comments VALUES ('1','First Text');");
 	}
 
 	@Override

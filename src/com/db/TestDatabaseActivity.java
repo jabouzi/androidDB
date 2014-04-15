@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.util.Log;
 
 public class TestDatabaseActivity extends ListActivity {
 	private CommentsDataSource datasource;
@@ -18,7 +19,7 @@ public class TestDatabaseActivity extends ListActivity {
 
 		datasource = new CommentsDataSource(this);
 		datasource.open();
-
+		Log.i("Activity", "Created" + datasource.getComment(1).getComment());
 		List<Comment> values = datasource.getAllComments();
 
 		// Use the SimpleCursorAdapter to show the
