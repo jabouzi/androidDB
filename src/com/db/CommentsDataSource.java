@@ -76,8 +76,19 @@ public class CommentsDataSource {
 		Comment comment = new Comment();
 		comment.setId(cursor.getLong(0));
 		comment.setComment(cursor.getString(1));
-		// return options
-		return comment;
+		cursor.close();
+		 
+		 return comment;
+	}
+	
+	public int getCommentsCount() {
+		String countQuery = "SELECT  * FROM comments";
+		Cursor cursor = database.rawQuery(countQuery, null);
+		int count = cursor.getCount();
+		cursor.close();
+
+		// return count
+		return count;
 	}
 
 	private Comment cursorToComment(Cursor cursor) {

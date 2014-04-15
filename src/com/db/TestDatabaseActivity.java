@@ -19,7 +19,7 @@ public class TestDatabaseActivity extends ListActivity {
 
 		datasource = new CommentsDataSource(this);
 		datasource.open();
-		Log.i("Activity", "Created" + datasource.getComment(1).getComment());
+		Log.i("DB ", "Created" + datasource.getComment(1).getComment());
 		List<Comment> values = datasource.getAllComments();
 
 		// Use the SimpleCursorAdapter to show the
@@ -52,6 +52,7 @@ public class TestDatabaseActivity extends ListActivity {
 			break;
 		}
 		adapter.notifyDataSetChanged();
+		Log.i("DB ", "COUNT" + String.valueOf(datasource.getCommentsCount()));
 	}
 
 	@Override
